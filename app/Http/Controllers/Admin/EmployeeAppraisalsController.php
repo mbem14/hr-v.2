@@ -20,6 +20,12 @@ class EmployeeAppraisalsController extends Controller
     {
         abort_if(Gate::denies('employee_appraisal_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $employees = Employee::all()->pluck('employee_number', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $periods = AppraisalPeriode::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $evaluators = Employee::all()->pluck('employee_number', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         if ($request->ajax()) {
             $query = EmployeeAppraisal::with(['employee', 'period', 'evaluator', 'created_by'])->select(sprintf('%s.*', (new EmployeeAppraisal)->table));
             $table = Datatables::of($query);
@@ -171,7 +177,7 @@ class EmployeeAppraisalsController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.employeeAppraisals.index');
+        return view('admin.employeeAppraisals.index', compact('employees', 'periods', 'evaluators'));
     }
 
     public function create()
