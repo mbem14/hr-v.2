@@ -12,7 +12,7 @@ use \DateTimeInterface;
 
 class Employee extends Model
 {
-    use SoftDeletes, MultiTenantModelTrait, Auditable, HasFactory;
+    use SoftDeletes, Auditable, HasFactory;
 
     public $table = 'employees';
 
@@ -46,7 +46,7 @@ class Employee extends Model
 
     const RELIGION_SELECT = [
         'Islam'     => 'Islam',
-        'Protestan' => 'Protestan',
+        'Kristen'   => 'Kristen',
         'Katolik'   => 'Katolik',
         'Hindu'     => 'Hindu',
         'Buddha'    => 'Buddha',
@@ -87,6 +87,7 @@ class Employee extends Model
         'department_id',
         'supervisor_id',
         'indirect_supervisors_id',
+        'indirect_supervisors2_id',
         'status',
         'created_at',
         'employment_status_id',
@@ -174,6 +175,10 @@ class Employee extends Model
     {
         return $this->belongsTo(Employee::class, 'indirect_supervisors_id');
     }
+    public function indirect_supervisors2()
+    {
+        return $this->belongsTo(Employee::class, 'indirect_supervisors2_id');
+    }
 
     public function employment_status()
     {
@@ -183,5 +188,9 @@ class Employee extends Model
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
+    }
+    public function getFullNameAttribute()
+    {
+       return ucfirst($this->first_name) . ' ' . ucfirst($this->middle_name). ' ' . ucfirst($this->last_name);
     }
 }

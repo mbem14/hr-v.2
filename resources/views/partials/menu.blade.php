@@ -132,7 +132,7 @@
         @can('administration_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/company-structures*") ? "c-show" : "" }} {{ request()->is("admin/job-titles*") ? "c-show" : "" }} {{ request()->is("admin/periodes*") ? "c-show" : "" }} {{ request()->is("admin/appraisal-periodes*") ? "c-show" : "" }} {{ request()->is("admin/employees*") ? "c-show" : "" }} {{ request()->is("admin/leave-types*") ? "c-show" : "" }} {{ request()->is("admin/leave-periods*") ? "c-show" : "" }} {{ request()->is("admin/leave-starting-balances*") ? "c-show" : "" }} {{ request()->is("admin/employee-history-jobs*") ? "c-show" : "" }} {{ request()->is("admin/courses*") ? "c-show" : "" }} {{ request()->is("admin/training-sessions*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-layer-group c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.administration.title') }}
@@ -201,7 +201,7 @@
                     @can('leave_period_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.leave-periods.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/leave-periods") || request()->is("admin/leave-periods/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw far fa-calendar-alt c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.leavePeriod.title') }}
@@ -211,7 +211,7 @@
                     @can('leave_starting_balance_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.leave-starting-balances.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/leave-starting-balances") || request()->is("admin/leave-starting-balances/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-play c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.leaveStartingBalance.title') }}
@@ -254,7 +254,7 @@
         @can('personal_information_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/employee-educations*") ? "c-show" : "" }} {{ request()->is("admin/employee-dependents*") ? "c-show" : "" }} {{ request()->is("admin/employee-skills*") ? "c-show" : "" }} {{ request()->is("admin/employee-certifications*") ? "c-show" : "" }} {{ request()->is("admin/emergency-contacts*") ? "c-show" : "" }} {{ request()->is("admin/employee-non-formal-educations*") ? "c-show" : "" }} {{ request()->is("admin/employee-organizations*") ? "c-show" : "" }} {{ request()->is("admin/employee-documents*") ? "c-show" : "" }} {{ request()->is("admin/employee-languages*") ? "c-show" : "" }} {{ request()->is("admin/employee-training-sessions*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-diagnoses c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.personalInformation.title') }}
@@ -408,7 +408,7 @@
         @can('leave_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/leave-managements*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-sign-out-alt c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.leave.title') }}

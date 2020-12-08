@@ -35,6 +35,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
+        'employee_id',
         'email_verified_at',
         'password',
         'remember_token',
@@ -48,6 +50,11 @@ class User extends Authenticatable
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
+    
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();

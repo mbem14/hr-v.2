@@ -126,10 +126,6 @@ class StoreEmployeeRequest extends FormRequest
                 'required',
                 'unique:employees',
             ],
-            'supervisor_id'        => [
-                'required',
-                'integer',
-            ],
             'employment_status_id' => [
                 'required',
                 'integer',

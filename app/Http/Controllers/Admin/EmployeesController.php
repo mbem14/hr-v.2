@@ -27,7 +27,6 @@ class EmployeesController extends Controller
         if ($request->ajax()) {
             $query = Employee::with(['nationality', 'country', 'province', 'job_title', 'department', 'supervisor', 'indirect_supervisors', 'employment_status', 'created_by'])->select(sprintf('%s.*', (new Employee)->table));
             $table = Datatables::of($query);
-
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
@@ -163,11 +162,11 @@ class EmployeesController extends Controller
         $job_titles          = JobTitle::get();
         $company_structures  = CompanyStructure::get();
         $employees           = Employee::get();
-        $employees           = Employee::get();
+        $employees2           = Employee::get();
         $employment_statuses = EmploymentStatus::get();
         $users               = User::get();
 
-        return view('admin.employees.index', compact('countries', 'countries', 'provinces', 'job_titles', 'company_structures', 'employees', 'employees', 'employment_statuses', 'users'));
+        return view('admin.employees.index', compact('countries', 'countries', 'provinces', 'job_titles', 'company_structures', 'employees', 'employees2', 'employment_statuses', 'users'));
     }
 
     public function create()
@@ -184,9 +183,9 @@ class EmployeesController extends Controller
 
         $departments = CompanyStructure::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $supervisors = Employee::all()->pluck('employee_number', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $supervisors = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $indirect_supervisors = Employee::all()->pluck('employee_number', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $indirect_supervisors = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employment_statuses = EmploymentStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

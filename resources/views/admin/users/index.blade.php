@@ -31,6 +31,9 @@
                         {{ trans('cruds.user.fields.email') }}
                     </th>
                     <th>
+                        {{ trans('cruds.user.fields.username') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.user.fields.email_verified_at') }}
                     </th>
                     <th>
@@ -95,6 +98,7 @@
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
+{ data: 'username', name: 'username' },
 { data: 'email_verified_at', name: 'email_verified_at' },
 { data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

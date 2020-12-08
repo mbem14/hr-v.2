@@ -10,8 +10,79 @@ Route::get('/home', function () {
 });
 
 Auth::routes(['register' => false]);
+Route::group([
+    'prefix' => 'user',
+    'as' => 'user.',
+    'namespace' => 'User',
+    'middleware' => ['auth']
+], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    // Attendances
+    Route::delete('attendances/destroy', 'AttendancesController@massDestroy')->name('attendances.massDestroy');
+    Route::resource('attendances', 'AttendancesController');
+    // Emergency Contacts
+    Route::delete('emergency-contacts/destroy', 'EmergencyContactsController@massDestroy')->name('emergency-contacts.massDestroy');
+    Route::resource('emergency-contacts', 'EmergencyContactsController');
+    // Employee Appraisals
+    Route::delete('employee-appraisals/destroy', 'EmployeeAppraisalsController@massDestroy')->name('employee-appraisals.massDestroy');
+    Route::resource('employee-appraisals', 'EmployeeAppraisalsController');
+    // Employee Certifications
+    Route::delete('employee-certifications/destroy', 'EmployeeCertificationsController@massDestroy')->name('employee-certifications.massDestroy');
+    Route::post('employee-certifications/media', 'EmployeeCertificationsController@storeMedia')->name('employee-certifications.storeMedia');
+    Route::post('employee-certifications/ckmedia', 'EmployeeCertificationsController@storeCKEditorImages')->name('employee-certifications.storeCKEditorImages');
+    Route::resource('employee-certifications', 'EmployeeCertificationsController');
+    // Employee Dependents
+    Route::delete('employee-dependents/destroy', 'EmployeeDependentsController@massDestroy')->name('employee-dependents.massDestroy');
+    Route::resource('employee-dependents', 'EmployeeDependentsController');
+    // Employee Documents
+    Route::delete('employee-documents/destroy', 'EmployeeDocumentsController@massDestroy')->name('employee-documents.massDestroy');
+    Route::post('employee-documents/media', 'EmployeeDocumentsController@storeMedia')->name('employee-documents.storeMedia');
+    Route::post('employee-documents/ckmedia', 'EmployeeDocumentsController@storeCKEditorImages')->name('employee-documents.storeCKEditorImages');
+    Route::resource('employee-documents', 'EmployeeDocumentsController');
+    // Employee Educations
+    Route::delete('employee-educations/destroy', 'EmployeeEducationsController@massDestroy')->name('employee-educations.massDestroy');
+    Route::resource('employee-educations', 'EmployeeEducationsController');
+    // Employee History Jobs
+    Route::delete('employee-history-jobs/destroy', 'EmployeeHistoryJobsController@massDestroy')->name('employee-history-jobs.massDestroy');
+    Route::post('employee-history-jobs/media', 'EmployeeHistoryJobsController@storeMedia')->name('employee-history-jobs.storeMedia');
+    Route::post('employee-history-jobs/ckmedia', 'EmployeeHistoryJobsController@storeCKEditorImages')->name('employee-history-jobs.storeCKEditorImages');
+    Route::resource('employee-history-jobs', 'EmployeeHistoryJobsController');
+    // Employee Languages
+    Route::delete('employee-languages/destroy', 'EmployeeLanguagesController@massDestroy')->name('employee-languages.massDestroy');
+    Route::resource('employee-languages', 'EmployeeLanguagesController');
+    // Employee Non Formal Educations
+    Route::delete('employee-non-formal-educations/destroy', 'EmployeeNonFormalEducationsController@massDestroy')->name('employee-non-formal-educations.massDestroy');
+    Route::post('employee-non-formal-educations/media', 'EmployeeNonFormalEducationsController@storeMedia')->name('employee-non-formal-educations.storeMedia');
+    Route::post('employee-non-formal-educations/ckmedia', 'EmployeeNonFormalEducationsController@storeCKEditorImages')->name('employee-non-formal-educations.storeCKEditorImages');
+    Route::resource('employee-non-formal-educations', 'EmployeeNonFormalEducationsController');
+    // Employee Organizations
+    Route::delete('employee-organizations/destroy', 'EmployeeOrganizationsController@massDestroy')->name('employee-organizations.massDestroy');
+    Route::resource('employee-organizations', 'EmployeeOrganizationsController');
+    // Employees
+    Route::delete('employees/destroy', 'EmployeesController@massDestroy')->name('employees.massDestroy');
+    Route::resource('employees', 'EmployeesController');
+    // Employee Skills
+    Route::delete('employee-skills/destroy', 'EmployeeSkillsController@massDestroy')->name('employee-skills.massDestroy');
+    Route::post('employee-skills/media', 'EmployeeSkillsController@storeMedia')->name('employee-skills.storeMedia');
+    Route::post('employee-skills/ckmedia', 'EmployeeSkillsController@storeCKEditorImages')->name('employee-skills.storeCKEditorImages');
+    Route::resource('employee-skills', 'EmployeeSkillsController');
+    // Employee Training Sessions
+    Route::delete('employee-training-sessions/destroy', 'EmployeeTrainingSessionsController@massDestroy')->name('employee-training-sessions.massDestroy');
+    Route::post('employee-training-sessions/media', 'EmployeeTrainingSessionsController@storeMedia')->name('employee-training-sessions.storeMedia');
+    Route::post('employee-training-sessions/ckmedia', 'EmployeeTrainingSessionsController@storeCKEditorImages')->name('employee-training-sessions.storeCKEditorImages');
+    Route::resource('employee-training-sessions', 'EmployeeTrainingSessionsController');
+    // Leave Managements
+    Route::delete('leave-managements/destroy', 'LeaveManagementController@massDestroy')->name('leave-managements.massDestroy');
+    Route::resource('leave-managements', 'LeaveManagementController');
+    // Overtimes
+    Route::delete('overtimes/destroy', 'OvertimeController@massDestroy')->name('overtimes.massDestroy');
+    Route::resource('overtimes', 'OvertimeController');
+    // Tasks
+    Route::delete('tasks/destroy', 'TaskController@massDestroy')->name('tasks.massDestroy');
+    Route::resource('tasks', 'TaskController');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+});
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -175,3 +246,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+

@@ -13,6 +13,8 @@ class AddRelationshipFieldsToEmployeeLanguagesTable extends Migration
             $table->foreign('employee_id', 'employee_fk_2654524')->references('id')->on('employees');
             $table->unsignedBigInteger('languages_id');
             $table->foreign('languages_id', 'languages_fk_2654525')->references('id')->on('languages');
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->foreign('created_by_id', 'created_by_fk_2689425')->references('id')->on('users');
         });
     }
 }

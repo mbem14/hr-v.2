@@ -31,21 +31,6 @@
                         {{ trans('cruds.employee.fields.first_name') }}
                     </th>
                     <th>
-                        {{ trans('cruds.employee.fields.middle_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.last_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.front_title') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.back_title') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.birth_place') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.employee.fields.birthday') }}
                     </th>
                     <th>
@@ -68,18 +53,6 @@
                     </th>
                     <th>
                         {{ trans('cruds.employee.fields.address_1') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.address_2') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.country') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.province') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.employee.fields.city') }}
                     </th>
                     <th>
                         {{ trans('cruds.employee.fields.postal_code') }}
@@ -149,20 +122,6 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                    </td>
-                    <td>
                         <select class="search" strict="true">
                             <option value>{{ trans('global.all') }}</option>
                             @foreach(App\Models\Employee::RELIGION_SELECT as $key => $item)
@@ -207,28 +166,6 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($countries as $key => $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('global.all') }}</option>
-                            @foreach($provinces as $key => $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                    </td>
-                    <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
@@ -243,13 +180,16 @@
                         </select>
                     </td>
                     <td>
-                    </td>
-                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+                    <td>
+                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -279,7 +219,7 @@
                     <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
-                            @foreach($employees as $key => $item)
+                            @foreach($employees2 as $key => $item)
                                 <option value="{{ $item->employee_number }}">{{ $item->employee_number }}</option>
                             @endforeach
                         </select>
@@ -358,11 +298,6 @@
 { data: 'id', name: 'id' },
 { data: 'employee_number', name: 'employee_number' },
 { data: 'first_name', name: 'first_name' },
-{ data: 'middle_name', name: 'middle_name' },
-{ data: 'last_name', name: 'last_name' },
-{ data: 'front_title', name: 'front_title' },
-{ data: 'back_title', name: 'back_title' },
-{ data: 'birth_place', name: 'birth_place' },
 { data: 'birthday', name: 'birthday' },
 { data: 'religion', name: 'religion' },
 { data: 'gender', name: 'gender' },
@@ -371,10 +306,6 @@
 { data: 'blood_type', name: 'blood_type' },
 { data: 'id_card', name: 'id_card' },
 { data: 'address_1', name: 'address_1' },
-{ data: 'address_2', name: 'address_2' },
-{ data: 'country_name', name: 'country.name' },
-{ data: 'province_name', name: 'province.name' },
-{ data: 'city', name: 'city' },
 { data: 'postal_code', name: 'postal_code' },
 { data: 'home_phone', name: 'home_phone' },
 { data: 'mobile_phone', name: 'mobile_phone' },

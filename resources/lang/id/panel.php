@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'performance appraisal',
+    'site_title' => 'SDMOnline V.2',
 ];

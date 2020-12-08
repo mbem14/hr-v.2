@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.user.fields.username') }}
+                        </th>
+                        <td>
+                            {{ $user->username }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.user.fields.email_verified_at') }}
                         </th>
                         <td>
