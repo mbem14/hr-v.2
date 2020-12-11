@@ -20,6 +20,7 @@ class StoreEmployeeAppraisalRequest extends FormRequest
             'employee_id'  => [
                 'required',
                 'integer',
+                'unique',
             ],
             'evaluator_id' => [
                 'required',

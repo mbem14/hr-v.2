@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-striped custom-table mb-0 datatable">
+                <table class="table table-striped custom-table mb-0 ajaxTable datatable datatable-EmployeeAppraisal">
                     <thead>
                         <tr>
                             <th width="10">
@@ -39,114 +39,6 @@
                             </th>
                             <th>
                                 {{ trans('cruds.employeeAppraisal.fields.period') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_1') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_2') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_3') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_4') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_5') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_6') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_7') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_8') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_9') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_10') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_11') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_12') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_13') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_14') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_15') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_16') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_17') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_18') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_19') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.pilih_20') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.target_1') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.target_2') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.target_3') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.target_4') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.target_5') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.reali_1') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.reali_2') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.reali_3') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.reali_4') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.reali_5') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.nilai_1') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.nilai_2') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.nilai_3') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.nilai_4') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.nilai_5') }}
-                            </th>
-                            <th>
-                                {{ trans('cruds.employeeAppraisal.fields.status') }}
                             </th>
                             <th>
                                 &nbsp;
@@ -292,9 +184,8 @@
                                 <div class="form-group">
                                     <td colspan="2">
                                         <div class="container d-flex justify-content-center">
-                                            
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_1') ? 'is-invalid' : '' }}" type="radio" name="pilih_1" id="pilih_1" value="1" {{ old('pilih_1') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_1') ? 'is-invalid' : '' }}" type="radio" name="pilih_1" id="pilih_1" value="1" {{ old('pilih_1') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -344,7 +235,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_2') ? 'is-invalid' : '' }}" type="radio" name="pilih_2" id="pilih_2" value="1" {{ old('pilih_2') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_2') ? 'is-invalid' : '' }}" type="radio" name="pilih_2" id="pilih_2" value="1" {{ old('pilih_2') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -394,7 +285,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_3') ? 'is-invalid' : '' }}" type="radio" name="pilih_3" id="pilih_3" value="1" {{ old('pilih_3') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_3') ? 'is-invalid' : '' }}" type="radio" name="pilih_3" id="pilih_3" value="1" {{ old('pilih_3') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -444,7 +335,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_4') ? 'is-invalid' : '' }}" type="radio" name="pilih_4" id="pilih_4" value="1" {{ old('pilih_4') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_4') ? 'is-invalid' : '' }}" type="radio" name="pilih_4" id="pilih_4" value="1" {{ old('pilih_4') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -494,7 +385,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_5') ? 'is-invalid' : '' }}" type="radio" name="pilih_5" id="pilih_5" value="1" {{ old('pilih_5') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_5') ? 'is-invalid' : '' }}" type="radio" name="pilih_5" id="pilih_5" value="1" {{ old('pilih_5') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -544,7 +435,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_6') ? 'is-invalid' : '' }}" type="radio" name="pilih_6" id="pilih_6" value="1" {{ old('pilih_6') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_6') ? 'is-invalid' : '' }}" type="radio" name="pilih_6" id="pilih_6" value="1" {{ old('pilih_6') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -594,7 +485,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_7') ? 'is-invalid' : '' }}" type="radio" name="pilih_7" id="pilih_7" value="1" {{ old('pilih_7') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_7') ? 'is-invalid' : '' }}" type="radio" name="pilih_7" id="pilih_7" value="1" {{ old('pilih_7') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -694,7 +585,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_9') ? 'is-invalid' : '' }}" type="radio" name="pilih_9" id="pilih_9" value="1" {{ old('pilih_9') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_9') ? 'is-invalid' : '' }}" type="radio" name="pilih_9" id="pilih_9" value="1" {{ old('pilih_9') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -744,7 +635,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_10') ? 'is-invalid' : '' }}" type="radio" name="pilih_10" id="pilih_10" value="1" {{ old('pilih_10') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_10') ? 'is-invalid' : '' }}" type="radio" name="pilih_10" id="pilih_10" value="1" {{ old('pilih_10') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -794,7 +685,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_11') ? 'is-invalid' : '' }}" type="radio" name="pilih_11" id="pilih_11" value="1" {{ old('pilih_11') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input tatanilai {{ $errors->has('pilih_11') ? 'is-invalid' : '' }}" type="radio" name="pilih_11" id="pilih_11" value="1" {{ old('pilih_11') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -922,7 +813,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_12') ? 'is-invalid' : '' }}" type="radio" name="pilih_12" id="pilih_12" value="1" {{ old('pilih_12') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_12') ? 'is-invalid' : '' }}" type="radio" name="pilih_12" id="pilih_12" value="1" {{ old('pilih_12') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -972,7 +863,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_13') ? 'is-invalid' : '' }}" type="radio" name="pilih_13" id="pilih_13" value="1" {{ old('pilih_13') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_13') ? 'is-invalid' : '' }}" type="radio" name="pilih_13" id="pilih_13" value="1" {{ old('pilih_13') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1022,11 +913,11 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_14') ? 'is-invalid' : '' }}" type="radio" name="pilih_14" id="pilih_14" value="1" {{ old('pilih_14') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_14') ? 'is-invalid' : '' }}" type="radio" name="pilih_14" id="pilih_14" value="1" {{ old('pilih_14') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_14') ? 'is-invalid' : '' }}" type="radio" name="pilih_14" id="pilih_14" value="2" {{ old('pilih_14') == "2" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_14') ? 'is-invalid' : '' }}" type="radio" name="pilih_14" id="pilih_14" value="2" {{ old('pilih_14') == "2" ? 'checked' : '' }} >
                                                     <label class="form-check-label" for="inlineRadio2">2</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1072,7 +963,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_15') ? 'is-invalid' : '' }}" type="radio" name="pilih_15" id="pilih_15" value="1" {{ old('pilih_15') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_15') ? 'is-invalid' : '' }}" type="radio" name="pilih_15" id="pilih_15" value="1" {{ old('pilih_15') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1122,7 +1013,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_16') ? 'is-invalid' : '' }}" type="radio" name="pilih_16" id="pilih_16" value="1" {{ old('pilih_16') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_16') ? 'is-invalid' : '' }}" type="radio" name="pilih_16" id="pilih_16" value="1" {{ old('pilih_16') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1172,7 +1063,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_17') ? 'is-invalid' : '' }}" type="radio" name="pilih_17" id="pilih_17" value="1" {{ old('pilih_17') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_17') ? 'is-invalid' : '' }}" type="radio" name="pilih_17" id="pilih_17" value="1" {{ old('pilih_17') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1222,7 +1113,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_18') ? 'is-invalid' : '' }}" type="radio" name="pilih_18" id="pilih_18" value="1" {{ old('pilih_18') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_18') ? 'is-invalid' : '' }}" type="radio" name="pilih_18" id="pilih_18" value="1" {{ old('pilih_18') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1272,7 +1163,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_19') ? 'is-invalid' : '' }}" type="radio" name="pilih_19" id="pilih_19" value="1" {{ old('pilih_19') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_19') ? 'is-invalid' : '' }}" type="radio" name="pilih_19" id="pilih_19" value="1" {{ old('pilih_19') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1322,7 +1213,7 @@
                                         <div class="container d-flex justify-content-center">
                                             
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input potensi {{ $errors->has('pilih_20') ? 'is-invalid' : '' }}" type="radio" name="pilih_20" id="pilih_20" value="1" {{ old('pilih_20') == "1" ? 'checked' : '' }}>
+                                                    <input class="form-check-input potensi {{ $errors->has('pilih_20') ? 'is-invalid' : '' }}" type="radio" name="pilih_20" id="pilih_20" value="1" {{ old('pilih_20') == "1" ? 'checked' : '' }} required>
                                                     <label class="form-check-label" for="inlineRadio1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -1544,7 +1435,7 @@
     @section('scripts')
     @parent
     <script>
-            function calcscore() {
+        function calcscore() {
                 var score = 0;
                 //var n = score.toFixed(2);
                 $(".tatanilai:checked").each(function() {
@@ -1639,7 +1530,7 @@
                 var j = parseInt($(".persen_5").val());
                 k = ((a * f / 100) + (b * g / 100) + (c * h / 100) + (d * i / 100) + (e * j / 100)) * 10;
                 $(".totalnilai").val(k);
-            }
+            }    
         
         $(function() {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -1689,7 +1580,7 @@
                 serverSide: true,
                 retrieve: true,
                 aaSorting: [],
-                ajax: "{{ route('admin.employee-appraisals.index') }}",
+                ajax: "{{ route('user.employee-appraisals.index') }}",
                 columns: [{
                         data: 'placeholder',
                         name: 'placeholder'
@@ -1705,154 +1596,6 @@
                     {
                         data: 'period_name',
                         name: 'period.name'
-                    },
-                    {
-                        data: 'evaluator_employee_number',
-                        name: 'evaluator.employee_number'
-                    },
-                    {
-                        data: 'pilih_1',
-                        name: 'pilih_1'
-                    },
-                    {
-                        data: 'pilih_2',
-                        name: 'pilih_2'
-                    },
-                    {
-                        data: 'pilih_3',
-                        name: 'pilih_3'
-                    },
-                    {
-                        data: 'pilih_4',
-                        name: 'pilih_4'
-                    },
-                    {
-                        data: 'pilih_5',
-                        name: 'pilih_5'
-                    },
-                    {
-                        data: 'pilih_6',
-                        name: 'pilih_6'
-                    },
-                    {
-                        data: 'pilih_7',
-                        name: 'pilih_7'
-                    },
-                    {
-                        data: 'pilih_8',
-                        name: 'pilih_8'
-                    },
-                    {
-                        data: 'pilih_9',
-                        name: 'pilih_9'
-                    },
-                    {
-                        data: 'pilih_10',
-                        name: 'pilih_10'
-                    },
-                    {
-                        data: 'pilih_11',
-                        name: 'pilih_11'
-                    },
-                    {
-                        data: 'pilih_12',
-                        name: 'pilih_12'
-                    },
-                    {
-                        data: 'pilih_13',
-                        name: 'pilih_13'
-                    },
-                    {
-                        data: 'pilih_14',
-                        name: 'pilih_14'
-                    },
-                    {
-                        data: 'pilih_15',
-                        name: 'pilih_15'
-                    },
-                    {
-                        data: 'pilih_16',
-                        name: 'pilih_16'
-                    },
-                    {
-                        data: 'pilih_17',
-                        name: 'pilih_17'
-                    },
-                    {
-                        data: 'pilih_18',
-                        name: 'pilih_18'
-                    },
-                    {
-                        data: 'pilih_19',
-                        name: 'pilih_19'
-                    },
-                    {
-                        data: 'pilih_20',
-                        name: 'pilih_20'
-                    },
-                    {
-                        data: 'target_1',
-                        name: 'target_1'
-                    },
-                    {
-                        data: 'target_2',
-                        name: 'target_2'
-                    },
-                    {
-                        data: 'target_3',
-                        name: 'target_3'
-                    },
-                    {
-                        data: 'target_4',
-                        name: 'target_4'
-                    },
-                    {
-                        data: 'target_5',
-                        name: 'target_5'
-                    },
-                    {
-                        data: 'reali_1',
-                        name: 'reali_1'
-                    },
-                    {
-                        data: 'reali_2',
-                        name: 'reali_2'
-                    },
-                    {
-                        data: 'reali_3',
-                        name: 'reali_3'
-                    },
-                    {
-                        data: 'reali_4',
-                        name: 'reali_4'
-                    },
-                    {
-                        data: 'reali_5',
-                        name: 'reali_5'
-                    },
-                    {
-                        data: 'nilai_1',
-                        name: 'nilai_1'
-                    },
-                    {
-                        data: 'nilai_2',
-                        name: 'nilai_2'
-                    },
-                    {
-                        data: 'nilai_3',
-                        name: 'nilai_3'
-                    },
-                    {
-                        data: 'nilai_4',
-                        name: 'nilai_4'
-                    },
-                    {
-                        data: 'nilai_5',
-                        name: 'nilai_5'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
                     },
                     {
                         data: 'actions',
@@ -1884,49 +1627,35 @@
             //     $('#ajaxModel').modal('show');
 
             // });
-            $('#saveBtn').click(function (e) {
+            
 
+            $('#appraisalModal').submit(function (e) {
                 e.preventDefault();
-
-                $(this).html('Sending..');
-
-
-
+                let formData = $(this).serializeArray();
+                $(".invalid-feedback").children("strong").text("");
+                $("#appraisalModal input").removeClass("is-invalid");
                 $.ajax({
-
-                data: $('#appraisalModal').serialize(),
-
-                url: "{{ route('user.employee-appraisals.store') }}",
-
-                type: "POST",
-
-                dataType: 'json',
-
-                success: function (data) {
-
-
-
-                    $('#appraisalModal').trigger("reset");
-
-                    $('#ajaxModel').modal('hide');
-
-                    table.draw();
-
-                
-
-                },
-
-                error: function (data) {
-
-                    console.log('Error:', data);
-
-                    $('#saveBtn').html('Save Changes');
-
-                }
-
-                });
-
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json"
+                    },
+                    url: "{{ route('user.employee-appraisals.store') }}",
+                    data: formData,
+                    success: () => window.location.assign("{{ route('user.employee-appraisals.index') }}"),
+                    error: (response) => {
+                        if(response.status === 422) {
+                            let errors = response.responseJSON.errors;
+                            Object.keys(errors).forEach(function (key) {
+                                $("#" + key + "Input").addClass("is-invalid");
+                                $("#" + key + "Error").children("strong").text(errors[key][0]);
+                            });
+                        } else {
+                            window.location.reload();
+                        }
+                    }
+                })
             });
+            
             
 
         });

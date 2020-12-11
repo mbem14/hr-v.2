@@ -21,9 +21,11 @@
 
 	<!-- Lineawesome CSS -->
 	<link rel=" stylesheet" href="{{ asset('assets/css/line-awesome.min.css') }}">
-	<!-- Datatable CSS -->
+    <!-- Datatable CSS -->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 	<link rel=" stylesheet" href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}">
-
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
 	<!-- Select2 CSS -->
 	<link rel=" stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
 
@@ -33,6 +35,11 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}">
 
     <!-- Main CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css"
+        rel="stylesheet" />
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -62,21 +69,21 @@
     <!-- /Main Wrapper -->
 
     <!-- jQuery -->
-    <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Bootstrap Core JS -->
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-
+    
+    
     <!-- Slimscroll JS -->
-    <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}"></script> -->
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
     <!-- Chart JS -->
     <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
     <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
@@ -92,6 +99,7 @@
     <script src="{{ asset('assets/js/chart.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function () {
             let copyButtonTrans = '{{ trans('global.datatables.copy') }}'

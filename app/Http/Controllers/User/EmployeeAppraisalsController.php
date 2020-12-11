@@ -19,11 +19,6 @@ class EmployeeAppraisalsController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('employee_appraisal_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        // if(!auth()->user()->is_user){
-        //     $employees = Employee::where('supervisor_id', auth()->id())->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        // }else{
-        //     $employees = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        // }
         $employees = Employee::where('supervisor_id', auth()->user()->employee_id)
                     ->orWhere('indirect_supervisors_id',auth()->user()->employee_id)
                     ->orWhere('indirect_supervisors2_id',auth()->user()->employee_id)
@@ -46,7 +41,7 @@ class EmployeeAppraisalsController extends Controller
                 $deleteGate    = 'employee_appraisal_delete';
                 $crudRoutePart = 'employee-appraisals';
 
-                return view('partials.datatablesActions', compact(
+                return view('partials.datatablesActionsUsers', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',
@@ -59,7 +54,7 @@ class EmployeeAppraisalsController extends Controller
                 return $row->id ? $row->id : "";
             });
             $table->addColumn('employee_employee_number', function ($row) {
-                return $row->employee ? $row->employee->employee_number : '';
+                return $row->employee ? $row->employee->full_name : '';
             });
 
             $table->addColumn('period_name', function ($row) {

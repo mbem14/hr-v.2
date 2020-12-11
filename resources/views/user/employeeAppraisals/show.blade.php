@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.template')
 @section('content')
 
 <div class="card">
@@ -28,7 +28,7 @@
                             {{ trans('cruds.employeeAppraisal.fields.employee') }}
                         </th>
                         <td>
-                            {{ $employeeAppraisal->employee->employee_number ?? '' }}
+                            {{ $employeeAppraisal->employee->full_name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +44,7 @@
                             {{ trans('cruds.employeeAppraisal.fields.evaluator') }}
                         </th>
                         <td>
-                            {{ $employeeAppraisal->evaluator->employee_number ?? '' }}
+                            {{ $employeeAppraisal->evaluator->full_name ?? '' }}
                         </td>
                     </tr>
                     <tr>
