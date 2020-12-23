@@ -96,5 +96,59 @@ class EmployeeAppraisal extends Model
     {
         return $this->belongsTo(User::class, 'created_by_id');
     }
+
+    public function getTataNilaiAttribute()
+    {
+       return $this->pilih_1 + $this->pilih_2 + $this->pilih_3 + $this->pilih_4 + $this->pilih_5 + $this->pilih_6 + $this->pilih_7 + $this->pilih_8 + $this->pilih_9 + $this->pilih_10 + $this->pilih_11 ;
+    }
+
+    public function getPotensiAttribute()
+    {
+       return $this->pilih_12 + $this->pilih_13 + $this->pilih_14 + $this->pilih_15 + $this->pilih_16 + $this->pilih_17 + $this->pilih_18 + $this->pilih_19 + $this->pilih_20 ;
+    }
+
+    public function getKinerjaAttribute()
+    {
+       return $this->nilai_1 + $this->nilai_2 + $this->nilai_3 + $this->nilai_4 + $this->nilai_5 ;
+    }
+    public function getXaxisAttribute(){
+        return $this->potensi;
+    }
+    public function getYaxisAttribute(){
+        return (70/100 * $this->kinerja) + (30/100 * $this->tata_nilai);
+    }
+    public function getMappingAttribute(){
+        $a = $this->yaxis;
+        $b = $this->xaxis;
+        if ($a>9 && $a<24 AND $b>9 && $b<24)  {
+            $sta="G";
+        }
+        elseif ($a>=24 && $a<38 AND $b>9 && $b<24) {
+            $sta="F";
+        }
+        elseif ($a>=38 AND $b>9 && $b<24) {
+            $sta="E";
+        }
+        elseif ($a>9 && $a<24 AND $b>=24 && $b<38)  {
+            $sta="F";
+        }
+        elseif ($a>=24 && $a<38 AND $b>=24 && $b<38) {
+            $sta="C";
+        }
+        elseif ($a>=38 AND $b>=24 && $b<38) {
+            $sta="B";
+        }
+        elseif ($a>9 && $a<24 AND $b>=38)  {
+            $sta="D";
+        }
+        elseif ($a>=24 && $a<38 AND $b>=38) {
+            $sta="B";
+        }
+        elseif ($a>=38 AND $b>=38) {
+            $sta="A ";
+        }
+
+        return $sta;
+    }
     
 }

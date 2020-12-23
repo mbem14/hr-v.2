@@ -384,6 +384,20 @@
                 <span class="help-block">{{ trans('cruds.employee.fields.indirect_supervisors_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="indirect_supervisors2_id">{{ trans('cruds.employee.fields.indirect_supervisors2') }}</label>
+                <select class="form-control select2 {{ $errors->has('indirect_supervisors2') ? 'is-invalid' : '' }}" name="indirect_supervisors2_id" id="indirect_supervisors2_id">
+                    @foreach($indirect_supervisors2 as $id => $indirect_supervisors2)
+                        <option value="{{ $id }}" {{ (old('indirect_supervisors2_id') ? old('indirect_supervisors2_id') : $employee->indirect_supervisors2->id ?? '') == $id ? 'selected' : '' }}>{{ $indirect_supervisors2 }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('indirect_supervisors2'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('indirect_supervisors2') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employee.fields.indirect_supervisors2_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label>{{ trans('cruds.employee.fields.status') }}</label>
                 <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
                     <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>

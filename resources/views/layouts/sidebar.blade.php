@@ -174,9 +174,6 @@
 						@can('employee_appraisal_access')
 						<li class="">
 							<a href="{{ route("user.employee-appraisals.index") }}" class="c-sidebar-nav-link {{ request()->is("user/employee-appraisals") || request()->is("user/employee-appraisals/*") ? "active" : "" }}">
-								<i class="fa-fw fas fa-cogs">
-
-								</i>
 								{{ trans('cruds.employeeAppraisal.title') }}
 							</a>
 						</li>
@@ -184,17 +181,6 @@
 					</ul>
 				</li>
 				@endcan
-				@if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
-				@can('profile_password_edit')
-				<li class="c-sidebar-nav-item">
-					<a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
-						<i class="fa-fw fas fa-key c-sidebar-nav-icon">
-						</i>
-						{{ trans('global.change_password') }}
-					</a>
-				</li>
-				@endcan
-				@endif
 			</ul>
 		</div>
 	</div>

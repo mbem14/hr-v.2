@@ -28,7 +28,7 @@
     <ul class="nav user-menu">
 
         <!-- Notifications -->
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <i class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
             </a>
@@ -59,18 +59,17 @@
                     <a href="activities.html">View all Notifications</a>
                 </div>
             </div>
-        </li>
+        </li> -->
         <!-- /Notifications -->
 
         <li class="nav-item dropdown has-arrow main-drop">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img src="{{ asset('assets/img/profiles/tese.jpg')}}" alt="">
+                <span class="user-img"><img src="{{ asset('assets/img/profiles/user.png')}}" alt="">
                     <span class="status online"></span></span>
                 <span>{{{ Auth::user()->name }}}</span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="settings.html">Settings</a>
+                <a class="dropdown-item" href="{{ route('profile.password.edit') }}">Account Setting</a>
                 <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
                 </form> 
@@ -84,8 +83,7 @@
     <div class="dropdown mobile-user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
         <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="profile.html">My Profile</a>
-            <a class="dropdown-item" href="settings.html">Settings</a>
+            <a class="dropdown-item" href="{{ route('profile.password.edit') }}">Account Setting</a>
             <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">{{ trans('global.logout') }}</a>
         </div>
     </div>

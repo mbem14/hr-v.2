@@ -7,10 +7,10 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">{{ trans('cruds.employeeAppraisal.title_singular') }} {{ trans('global.list') }}</h3>
+                <h3 class="page-title">{{ trans('global.list') }} {{ trans('cruds.employeeAppraisal.title_singular') }} </h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active">{{ trans('cruds.employeeAppraisal.title_singular') }} {{ trans('global.list') }}</li>
+                    <li class="breadcrumb-item active">{{ trans('global.list') }} {{ trans('cruds.employeeAppraisal.title_singular') }} </li>
                 </ul>
             </div>
             @can('employee_appraisal_create')
@@ -98,11 +98,8 @@
 
                             <div class="form-group">
                                 <label class="required" for="evaluator_id">{{ trans('cruds.employeeAppraisal.fields.evaluator') }}</label>
-                                <select class="form-control select2 {{ $errors->has('evaluator') ? 'is-invalid' : '' }}" name="evaluator_id" id="evaluator_id" required>
-                                    @foreach($evaluators as $id => $evaluator)
-                                    <option value="{{ $id }}" {{ auth()->user()->employee_id == $id ? 'selected' : '' }}>{{ $evaluator }}</option>
-                                    @endforeach
-                                </select>
+                                <input  class="form-control" type="hidden" name="evaluator_id" id="evaluator_id" value="{{ $evaluators->id}}">
+                                <input  class="form-control" type="text" name="" id="" value="{{ $evaluators->full_name}}" readonly>
                                 @if($errors->has('evaluator'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('evaluator') }}
@@ -722,14 +719,14 @@
                             </div>
                         </div>
 
-                        <div class="row col-sm-12">
+                        <div class="row col-sm-12" style="display: none;">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="col-form-label">Average (AVG)</label>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <label class="col-form-label d-flex justify-content-center"><input type="text" align="center" id="total1" name="total1"></label>
+                                <label class="col-form-label d-flex justify-content-center"><input type="text" align="center" id="total1" name="total1" readonly></label>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
@@ -1250,14 +1247,14 @@
                             </div>
                         </div>
 
-                        <div class="row col-sm-12">
+                        <div class="row col-sm-12" style="display: none;">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="col-form-label">Average (AVG)</label>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <label class="col-form-label d-flex justify-content-center"><input type="text" align="center" id="total2" name="total2"></label>
+                                <label class="col-form-label d-flex justify-content-center"><input type="text" align="center" id="total2" name="total2" readonly ></label>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
@@ -1313,8 +1310,8 @@
                             <thead style="background-color: #fff1c8;">
                                 <tr>
                                     <th style="text-align: center;width: 40%;">Kinerja (KPI)</th>
-                                    <th colspan="4" style="text-align: center;width: 40%;">PENILAIAN (KPI)</th>
-                                    <th rowspan="2" style="text-align: center;width: 20% !important;">NILAI</th>
+                                    <th colspan="4" style="text-align: center;width: 30%;">PENILAIAN (KPI)</th>
+                                    <th rowspan="2" style="text-align: center;width: 30% !important;">NILAI</th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;" class="col-md-2">Aspek Penilaian</th>
@@ -1404,14 +1401,14 @@
                                         <!-- <input type="number" name="" class="nilai5" oninput="hitungNilai()"> -->
                                     </td>
                                     <td style="display:none;"><input type="text" name="" class="totalkinerja_5" oninput="hitungTotal()" width="100%"></td>
-                                    <input type="text" name="total3" class="totalnilai">
-                                    <input type="text" name="" class="totalrealisasi">
+                                    <input type="text" name="total3" class="totalnilai" style="display: none;">
+                                    <input type="text" name="" class="totalrealisasi" style="display: none;">
 
                                 </tr>
                             </tbody>
                         </table>
 
-                        <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="col-form-label">Status</label>
                                 <select class="select">
@@ -1419,7 +1416,7 @@
                                     <option>Inactive</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- end Penilaian Kinerja-->
                     </div>
 
@@ -1533,12 +1530,13 @@
             }    
         
         $(function() {
+            
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
             @can('employee_appraisal_delete')
             let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
             let deleteButton = {
                 text: deleteButtonTrans,
-                url: "{{ route('admin.employee-appraisals.massDestroy') }}",
+                url: "{{ route('user.employee-appraisals.massDestroy') }}",
                 className: 'btn-danger',
                 action: function(e, dt, node, config) {
                     var ids = $.map(dt.rows({
@@ -1614,49 +1612,33 @@
                     .columns.adjust();
             });
 
-            // $('#appraisalModal').click(function () {
 
-            //     $('#saveBtn').val("create-appraisal");
-
-            //     $('#appraisal_id').val('');
-
-            //     $('#appraisalModal').trigger("reset");
-
-            //     $('#modelHeading').html("Create New Appraisal");
-
-            //     $('#ajaxModel').modal('show');
-
+            // $('#appraisalModal').submit(function (e) {
+            //     e.preventDefault();
+            //     let formData = $(this).serializeArray();
+            //     $(".invalid-feedback").children("strong").text("");
+            //     $("#appraisalModal input").removeClass("is-invalid");
+            //     $.ajax({
+            //         method: "POST",
+            //         headers: {
+            //             Accept: "application/json"
+            //         },
+            //         url: "{{ route('user.employee-appraisals.store') }}",
+            //         data: formData,
+            //         success: () => window.location.assign("{{ route('admin.employee-appraisals.index') }}"),
+            //         error: (response) => {
+            //             if(response.status === 422) {
+            //                 let errors = response.responseJSON.errors;
+            //                 Object.keys(errors).forEach(function (key) {
+            //                     $("#" + key + "Input").addClass("is-invalid");
+            //                     $("#" + key + "Error").children("strong").text(errors[key][0]);
+            //                 });
+            //             } else {
+            //                 window.location.reload();
+            //             }
+            //         }
+            //     })
             // });
-            
-
-            $('#appraisalModal').submit(function (e) {
-                e.preventDefault();
-                let formData = $(this).serializeArray();
-                $(".invalid-feedback").children("strong").text("");
-                $("#appraisalModal input").removeClass("is-invalid");
-                $.ajax({
-                    method: "POST",
-                    headers: {
-                        Accept: "application/json"
-                    },
-                    url: "{{ route('user.employee-appraisals.store') }}",
-                    data: formData,
-                    success: () => window.location.assign("{{ route('user.employee-appraisals.index') }}"),
-                    error: (response) => {
-                        if(response.status === 422) {
-                            let errors = response.responseJSON.errors;
-                            Object.keys(errors).forEach(function (key) {
-                                $("#" + key + "Input").addClass("is-invalid");
-                                $("#" + key + "Error").children("strong").text(errors[key][0]);
-                            });
-                        } else {
-                            window.location.reload();
-                        }
-                    }
-                })
-            });
-            
-            
 
         });
 

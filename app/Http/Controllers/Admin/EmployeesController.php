@@ -54,6 +54,9 @@ class EmployeesController extends Controller
             $table->editColumn('first_name', function ($row) {
                 return $row->first_name ? $row->first_name : "";
             });
+            $table->editColumn('full_name', function ($row) {
+                return $row->full_name ? $row->full_name : "";
+            });
             $table->editColumn('middle_name', function ($row) {
                 return $row->middle_name ? $row->middle_name : "";
             });
@@ -116,7 +119,7 @@ class EmployeesController extends Controller
                 return $row->mobile_phone ? $row->mobile_phone : "";
             });
             $table->addColumn('job_title_code', function ($row) {
-                return $row->job_title ? $row->job_title->code : '';
+                return $row->job_title ? $row->job_title->name : '';
             });
 
             $table->editColumn('number_decree', function ($row) {
@@ -136,14 +139,16 @@ class EmployeesController extends Controller
                 return $row->department ? $row->department->title : '';
             });
 
-            $table->addColumn('supervisor_employee_number', function ($row) {
-                return $row->supervisor ? $row->supervisor->employee_number : '';
+            $table->addColumn('supervisor_full_name', function ($row) {
+                return $row->supervisor ? $row->supervisor->full_name : '';
             });
 
-            $table->addColumn('indirect_supervisors_employee_number', function ($row) {
-                return $row->indirect_supervisors ? $row->indirect_supervisors->employee_number : '';
+            $table->addColumn('indirect_supervisors_full_name', function ($row) {
+                return $row->indirect_supervisors ? $row->indirect_supervisors->full_name : '';
             });
-
+            $table->addColumn('indirect_supervisors2_full_name', function ($row) {
+                return $row->indirect_supervisors2 ? $row->indirect_supervisors2->full_name : '';
+            });
             $table->editColumn('status', function ($row) {
                 return $row->status ? Employee::STATUS_SELECT[$row->status] : '';
             });
@@ -151,7 +156,7 @@ class EmployeesController extends Controller
                 return $row->employment_status ? $row->employment_status->name : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'nationality', 'country', 'province', 'job_title', 'department', 'supervisor', 'indirect_supervisors', 'employment_status']);
+            $table->rawColumns(['actions', 'placeholder', 'nationality', 'country', 'province', 'job_title', 'department', 'supervisor', 'indirect_supervisors','indirect_supervisors', 'employment_status']);
 
             return $table->make(true);
         }
@@ -163,10 +168,11 @@ class EmployeesController extends Controller
         $company_structures  = CompanyStructure::get();
         $employees           = Employee::get();
         $employees2           = Employee::get();
+        $employees3           = Employee::get();
         $employment_statuses = EmploymentStatus::get();
         $users               = User::get();
 
-        return view('admin.employees.index', compact('countries', 'countries', 'provinces', 'job_titles', 'company_structures', 'employees', 'employees2', 'employment_statuses', 'users'));
+        return view('admin.employees.index', compact('countries', 'countries', 'provinces', 'job_titles', 'company_structures', 'employees', 'employees2', 'employees3', 'employment_statuses', 'users'));
     }
 
     public function create()
@@ -209,19 +215,20 @@ class EmployeesController extends Controller
 
         $provinces = Province::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $job_titles = JobTitle::all()->pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $job_titles = JobTitle::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $departments = CompanyStructure::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $supervisors = Employee::all()->pluck('employee_number', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $supervisors = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $indirect_supervisors = Employee::all()->pluck('employee_number', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $indirect_supervisors = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $indirect_supervisors2 = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employment_statuses = EmploymentStatus::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employee->load('nationality', 'country', 'province', 'job_title', 'department', 'supervisor', 'indirect_supervisors', 'employment_status', 'created_by');
 
-        return view('admin.employees.edit', compact('nationalities', 'countries', 'provinces', 'job_titles', 'departments', 'supervisors', 'indirect_supervisors', 'employment_statuses', 'employee'));
+        return view('admin.employees.edit', compact('nationalities', 'countries', 'provinces', 'job_titles', 'departments', 'supervisors', 'indirect_supervisors', 'indirect_supervisors2', 'employment_statuses', 'employee'));
     }
 
     public function update(UpdateEmployeeRequest $request, Employee $employee)

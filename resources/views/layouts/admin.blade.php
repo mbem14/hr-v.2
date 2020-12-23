@@ -157,6 +157,7 @@
                     selector: 'td:first-child'
                 },
                 order: [],
+                lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, 'All'] ],
                 scrollX: true,
                 pageLength: 100,
                 dom: 'lBfrtip<"actions">',

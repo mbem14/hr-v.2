@@ -19,19 +19,18 @@ class EmployeeAppraisalsController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('employee_appraisal_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $employees = Employee::where('supervisor_id', auth()->user()->employee_id)
-                    ->orWhere('indirect_supervisors_id',auth()->user()->employee_id)
-                    ->orWhere('indirect_supervisors2_id',auth()->user()->employee_id)
+        $user_employees = auth()->user()->employee_id;
+        $employees = Employee::where('supervisor_id', $user_employees)
+                    ->orWhere('indirect_supervisors_id',$user_employees)
+                    ->orWhere('indirect_supervisors2_id',$user_employees)
                     ->get()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        
         $periods = AppraisalPeriode::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $evaluators = Employee::all()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
+        $evaluators = Employee::where('id', $user_employees)->first();
         if ($request->ajax()) {
             $query = EmployeeAppraisal::with(['employee', 'period', 'evaluator', 'created_by'])->select(sprintf('%s.*', (new EmployeeAppraisal)->table));
             $table = Datatables::of($query);
-
+            
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
