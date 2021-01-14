@@ -23,8 +23,13 @@ class EmployeeAppraisalsController extends Controller
         $employees = Employee::where('supervisor_id', $user_employees)
                     ->orWhere('indirect_supervisors_id',$user_employees)
                     ->orWhere('indirect_supervisors2_id',$user_employees)
-                    ->get()->pluck('full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $periods = AppraisalPeriode::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+                    ->get()
+                    ->pluck('full_name', 'id')
+                    ->prepend(trans('global.pleaseSelect'), '');
+        $periods = AppraisalPeriode::where('status', 'active')
+                    ->get()
+                    ->pluck('name', 'id')
+                    ->prepend(trans('global.pleaseSelect'), '');
 
         $evaluators = Employee::where('id', $user_employees)->first();
         if ($request->ajax()) {
@@ -246,5 +251,10 @@ class EmployeeAppraisalsController extends Controller
         EmployeeAppraisal::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function getEmployeePeriode(Request $request){
+        $periode= $request->periode_id;
+        $getEmployee = EmployeeAppraisal::whereNotIn();
     }
 }

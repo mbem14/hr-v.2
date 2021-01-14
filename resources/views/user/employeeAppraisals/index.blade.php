@@ -68,20 +68,6 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="col-form-label required" for="employee_id">{{ trans('cruds.employeeAppraisal.fields.employee') }}</label>
-                                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id" id="employee_id" required>
-                                    @foreach($employees as $id => $employee)
-                                    <option value="{{ $id }}" {{ old('employee_id') == $id ? 'selected' : '' }}>{{ $employee }}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('employee'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('employee') }}
-                                </div>
-                                @endif
-                                <span class="help-block">{{ trans('cruds.employeeAppraisal.fields.employee_helper') }}</span>
-                            </div>
-                            <div class="form-group">
                                 <label for="period_id">{{ trans('cruds.employeeAppraisal.fields.period') }}</label>
                                 <select class="form-control select2 {{ $errors->has('period') ? 'is-invalid' : '' }}" name="period_id" id="period_id" required>
                                     @foreach($periods as $id => $period)
@@ -95,7 +81,20 @@
                                 @endif
                                 <span class="help-block">{{ trans('cruds.employeeAppraisal.fields.period_helper') }}</span>
                             </div>
-
+                            <div class="form-group">
+                                <label class="col-form-label required" for="employee_id">{{ trans('cruds.employeeAppraisal.fields.employee') }}</label>
+                                <select class="form-control select2 {{ $errors->has('employee') ? 'is-invalid' : '' }}" name="employee_id" id="employee_id" required>
+                                    @foreach($employees as $id => $employee)
+                                    <option value="{{ $id }}" {{ old('employee_id') == $id ? 'selected' : '' }}>{{ $employee }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('employee'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('employee') }}
+                                </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.employeeAppraisal.fields.employee_helper') }}</span>
+                            </div>
                             <div class="form-group">
                                 <label class="required" for="evaluator_id">{{ trans('cruds.employeeAppraisal.fields.evaluator') }}</label>
                                 <input  class="form-control" type="hidden" name="evaluator_id" id="evaluator_id" value="{{ $evaluators->id}}">
@@ -1326,8 +1325,8 @@
                                     <td>Jumlah Pencapaian Program Kerja</td>
                                     <td>Jumlah Proker yang selesai dilaksanakan dibandingkan dengan target</td>
                                     <td><input style="background-color: #dcd7d7;" type="text" name="" class="persen_1" oninput="hitung1();" value="30" readonly=""></td>
-                                    <td><input type="number" name="target_1" class="target_1" oninput="hitung1();" width="100%"></td>
-                                    <td><input type="number" name="reali_1" class="reali_1" oninput="hitung1();" width="100%"></td>
+                                    <td><input type="number" name="target_1" class="target_1" oninput="hitung1();" width="100%" required></td>
+                                    <td><input type="number" name="reali_1" class="reali_1" oninput="hitung1();" width="100%" required></td>
                                     <td align="center">
                                         <input type="radio" value="1" name="nilai_1" onclick="hitungNilai(this.value)" required="">1
                                         <input type="radio" value="2" name="nilai_1" onclick="hitungNilai(this.value)">2
@@ -1341,8 +1340,8 @@
                                     <td>(%) Pemahaman terhadap tugas pokok</td>
                                     <td>Pemahaman serta pengetahuan yang dimiliki terkait tugas pokok</td>
                                     <td><input style="background-color: #dcd7d7;" type="text" name="" class="persen_2" oninput="hitung2();" value="20" readonly=""></td>
-                                    <td><input type="number" name="target_2" class="target_2" oninput="hitung2();" width="100%"></td>
-                                    <td><input type="number" name="reali_2" class="reali_2" oninput="hitung2();" width="100%"></td>
+                                    <td><input type="number" name="target_2" class="target_2" oninput="hitung2();" width="100%" required></td>
+                                    <td><input type="number" name="reali_2" class="reali_2" oninput="hitung2();" width="100%" required></td>
                                     <td align="center">
                                         <input type="radio" value="1" name="nilai_2" onclick="hitungNilai(this.value)" required="">1
                                         <input type="radio" value="2" name="nilai_2" onclick="hitungNilai(this.value)">2
@@ -1357,8 +1356,8 @@
                                     <td>Rata - rata waktu yang di butuhkan untuk menyelesaikan tugas - tugas yang
                                         diberikan</td>
                                     <td><input style="background-color: #dcd7d7;" type="text" name="" class="persen_3" oninput="hitung3();" value="15" readonly=""></td>
-                                    <td><input type="number" name="target_3" class="target_3" oninput="hitung3();" width="100%"></td>
-                                    <td><input type="number" name="reali_3" class="reali_3" oninput="hitung3();" width="100%"></td>
+                                    <td><input type="number" name="target_3" class="target_3" oninput="hitung3();" width="100%" required></td>
+                                    <td><input type="number" name="reali_3" class="reali_3" oninput="hitung3();" width="100%" required></td>
                                     <td align="center">
                                         <input type="radio" value="1" name="nilai_3" onclick="hitungNilai(this.value)" required="">1
                                         <input type="radio" value="2" name="nilai_3" onclick="hitungNilai(this.value)">2
@@ -1373,8 +1372,8 @@
                                     <td>Ketelitian dan waktu yang dibutuhkan untuk menyelesaikan tugas - tugas yang
                                         diberikan</td>
                                     <td><input style="background-color: #dcd7d7;" type="text" name="" class="persen_4" oninput="hitung4();" value="20" readonly=""></td>
-                                    <td><input type="number" name="target_4" class="target_4" oninput="hitung4();" width="100%"></td>
-                                    <td><input type="number" name="reali_4" class="reali_4" oninput="hitung4();" width="100%"></td>
+                                    <td><input type="number" name="target_4" class="target_4" oninput="hitung4();" width="100%" required></td>
+                                    <td><input type="number" name="reali_4" class="reali_4" oninput="hitung4();" width="100%" required></td>
                                     <td align="center">
                                         <input type="radio" value="1" name="nilai_4" onclick="hitungNilai(this.value)" required="">1
                                         <input type="radio" value="2" name="nilai_4" onclick="hitungNilai(this.value)">2
@@ -1390,8 +1389,8 @@
                                     <td>Produk / Output dari pekerjaan yang diselesaikan tidak pernah turun/buruk
                                     </td>
                                     <td><input style="background-color: #dcd7d7;" type="text" name="" class="persen_5" oninput="hitung5();" value="15" readonly=""></td>
-                                    <td><input type="number" name="target_5" class="target_5" oninput="hitung5();" width="100%"></td>
-                                    <td><input type="number" name="reali_5" class="reali_5" oninput="hitung5();" width="100%"></td>
+                                    <td><input type="number" name="target_5" class="target_5" oninput="hitung5();" width="100%" required></td>
+                                    <td><input type="number" name="reali_5" class="reali_5" oninput="hitung5();" width="100%" required></td>
                                     <td align="center">
                                         <input type="radio" value="1" name="nilai_5" onclick="hitungNilai(this.value)" required="">1
                                         <input type="radio" value="2" name="nilai_5" onclick="hitungNilai(this.value)">2

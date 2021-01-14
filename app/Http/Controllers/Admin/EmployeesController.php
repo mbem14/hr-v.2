@@ -25,7 +25,7 @@ class EmployeesController extends Controller
         abort_if(Gate::denies('employee_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Employee::with(['nationality', 'country', 'province', 'job_title', 'department', 'supervisor', 'indirect_supervisors', 'employment_status', 'created_by'])->select(sprintf('%s.*', (new Employee)->table));
+            $query = Employee::with(['nationality', 'country', 'province', 'job_title', 'department', 'supervisor', 'indirect_supervisors', 'employment_status', 'created_by'])->select(sprintf('%s.*', (new Employee)->table))->get();
             $table = Datatables::of($query);
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
@@ -160,19 +160,8 @@ class EmployeesController extends Controller
 
             return $table->make(true);
         }
-
-        $countries           = Country::get();
-        $countries           = Country::get();
-        $provinces           = Province::get();
-        $job_titles          = JobTitle::get();
-        $company_structures  = CompanyStructure::get();
-        $employees           = Employee::get();
-        $employees2           = Employee::get();
-        $employees3           = Employee::get();
-        $employment_statuses = EmploymentStatus::get();
-        $users               = User::get();
-
-        return view('admin.employees.index', compact('countries', 'countries', 'provinces', 'job_titles', 'company_structures', 'employees', 'employees2', 'employees3', 'employment_statuses', 'users'));
+        
+        return view('admin.employees.index');
     }
 
     public function create()

@@ -19,15 +19,4 @@ class AddIndirectsup2ToEmployeeTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('employees', function (Blueprint $table) {
-            //
-        });
-    }
 }

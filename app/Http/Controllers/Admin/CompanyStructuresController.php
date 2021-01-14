@@ -19,7 +19,7 @@ class CompanyStructuresController extends Controller
         abort_if(Gate::denies('company_structure_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = CompanyStructure::with(['parent'])->select(sprintf('%s.*', (new CompanyStructure)->table));
+            $query = CompanyStructure::with(['parent'])->select(sprintf('%s.*', (new CompanyStructure)->table))->get();
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
